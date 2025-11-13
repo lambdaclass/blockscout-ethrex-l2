@@ -34,11 +34,9 @@ services:
       args:
         RELEASE_VERSION: 8.0.2
     environment:
-        ETHEREUM_JSONRPC_HTTP_URL: http://host.docker.internal:8545/
-        ETHEREUM_JSONRPC_TRACE_URL: http://host.docker.internal:8545/
-        ETHEREUM_JSONRPC_WS_URL: ws://host.docker.internal:8545/
-        CHAIN_ID: '1337'
-    network_mode: "host"
+        ETHEREUM_JSONRPC_HTTP_URL: http://host.docker.internal:1729/
+        ETHEREUM_JSONRPC_TRACE_URL: http://host.docker.internal:1729/
+        CHAIN_ID: '65536999'
 
   visualizer:
     extends:
@@ -58,6 +56,8 @@ services:
     extends:
       file: ./services/frontend.yml
       service: frontend
+    ports:
+      - 3000:3000
 
   stats-db-init:
     extends:
